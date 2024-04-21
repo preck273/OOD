@@ -47,8 +47,8 @@ public class FileMenu {
         try {
             PresentationHandler.openPresentation(presentationFrame.presentation);
             presentationFrame.presentation.setSlideNumber(0);
-        } catch (IOException e) {
-            handleIOException(e, "load");
+        } catch (IOException exc) {
+            JOptionPane.showMessageDialog(presentationFrame.frame, MenuControllerException.iOException() + exc, MenuControllerException.loadErrorException(), JOptionPane.ERROR_MESSAGE);
         }
         presentationFrame.frame.repaint();
     }
@@ -60,8 +60,8 @@ public class FileMenu {
     private void savePresentation() {
         try {
             PresentationHandler.savePresentation(presentationFrame.presentation);
-        } catch (IOException e) {
-            handleIOException(e, "save");
+        } catch (IOException exc) {
+            JOptionPane.showMessageDialog(presentationFrame.frame, MenuControllerException.iOException() + exc, MenuControllerException.saveErrorException(), JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -69,8 +69,4 @@ public class FileMenu {
         presentationFrame.presentation.exit(0);
     }
 
-    private void handleIOException(IOException e, String operation) {
-        String errorMessage = String.format("Error occurred during %s operation: %s", operation, e.getMessage());
-        JOptionPane.showMessageDialog(presentationFrame.frame, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
-    }
 }
