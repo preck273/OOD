@@ -29,11 +29,11 @@ public class XMLAccessor extends Accessor {
 		String attributeValue = attributes.getNamedItem(attributeName).getTextContent();
 		try {
 			return Integer.parseInt(attributeValue);
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | NullPointerException e) {
+			System.err.println(XmlException.numberFormatError());
 			return defaultValue;
-		} catch (NullPointerException e) {
-			return defaultValue; // Attribute not found
-		}
+		} 
+
 	}
 	@Override
 	public void loadFile(Presentation p, String fn) throws IOException {
