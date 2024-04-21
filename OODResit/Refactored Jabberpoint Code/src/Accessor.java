@@ -1,12 +1,14 @@
+import java.io.IOException;
 
-public abstract class Accessor implements LoadSaveXml {
+public abstract class Accessor {
 
+	public Accessor() {
+	}
 	public static Accessor getDemoAccessor() {
 		return new DemoPresentation();
 	}
 
-	public Accessor() {
-	}
 
-
+	public abstract void loadFile(Presentation p, String fn) throws IOException;
+	public abstract void saveFile(Presentation p, String fn) throws IOException;
 }

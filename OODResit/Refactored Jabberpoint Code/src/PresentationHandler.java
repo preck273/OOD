@@ -1,6 +1,7 @@
 import java.io.IOException;
 
-public class StartPresentation {
+
+public class PresentationHandler {
     public static void openPresentation(Presentation presentation) throws IOException {
 
         Accessor loadXmlFile = new LoadXmlFile();
